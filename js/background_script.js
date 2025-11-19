@@ -2676,160 +2676,144 @@
               }
               return true;
             // ...existing code...
-            // ...existing code...
             case "download_file": {
               const url = t.url;
               const filename = t.filename;
-              if (!url) return r(null);
 
-              (async () => {
-                try {
-                  // nađi tab sa player frame-om ili aktivni tab
-                  let tabs = await chrome.tabs.query({
-                    url: "*://player.vimeo.com/*",
-                  });
-                  let tabId = tabs && tabs.length ? tabs[0].id : undefined;
-                  if (!tabId) {
-                    const active = await chrome.tabs.query({
-                      active: true,
-                      lastFocusedWindow: true,
-                    });
-                    tabId = active && active[0] && active[0].id;
+              // ako imamo direktan URL - koristimo postojeći helper za download
+              if (url) {
+                a().qt(url, filename, r);
+                return true;
+              }
+
+              // nema direktnog URL-a -> koristimo internu parser funkciju d.getVimeoLinks
+              try {
+                d.getVimeoLinks(t, function (res) {
+                  if (!res) {
+                    r(null);
+                    return;
                   }
 
-                  if (tabId) {
-                    try {
-                      const results = await chrome.scripting.executeScript({
-                        target: { tabId, allFrames: true },
-                        func: async (videoId, suggestedFilename) => {
-                          try {
-                            if (
-                              !location.hostname ||
-                              !location.hostname.includes("player.vimeo.com")
-                            )
-                              return {
-                                attempted: false,
-                                host: location.hostname || "",
-                              };
+                  // ako nema linkova, pokušaj da kopiraš master playlist u clipboard i otvoriš tab
+                  if (!res.links || !res.links.length) {
+                    if (res.master_play_list) {
+                      try {
+                        const master = res.master_play_list;
+                        const html = `
+<!doctype html><meta charset="utf-8">
+<body style="font-family:Arial,Helvetica,sans-serif">
+<p id="s">Copying playlist to clipboard...</p>
+<script>
+(async function(){
+  try{
+    const text = ${JSON.stringify(res.master_play_list)};
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+      document.getElementById('s').innerText = 'Master playlist copied to clipboard. This tab will close.';
+      setTimeout(()=>window.close(),800);
+    } else {
+      // fallback: show textarea for manual copy
+      const ta=document.createElement('textarea');ta.style.width='100%';ta.style.height='60vh';ta.value=text;document.body.appendChild(ta);ta.select();
+      document.getElementById('s').innerText='Press Ctrl/Cmd+C to copy then close this tab.';
+    }
+  }catch(e){
+    document.getElementById('s').innerText='Copy failed: '+e;
+  }
+})();
+</script>`;
+                        const dataUrl =
+                          "data:text/html;charset=utf-8," +
+                          encodeURIComponent(html);
+                        chrome.tabs
+                          .create({ url: dataUrl, active: true })
+                          .catch(() => {});
+                      } catch (e) {}
+                    }
+                    r(null);
+                    return;
+                  }
 
-                            const cfgUrl = `https://player.vimeo.com/video/${videoId}/config`;
-                            const resp = await fetch(cfgUrl, {
-                              credentials: "include",
-                            });
-                            if (!resp.ok)
-                              return { attempted: false, status: resp.status };
-
-                            const json = await resp.json();
-
-                            // 1) prvo probaj progressive direktne mp4
-                            const prog = json?.request?.files?.progressive;
-                            if (Array.isArray(prog) && prog.length) {
-                              const file = prog[prog.length - 1] || prog[0];
-                              const downloadUrl = file.url;
-                              const a = document.createElement("a");
-                              a.href = downloadUrl;
-                              if (suggestedFilename)
-                                a.download = suggestedFilename;
-                              a.style.display = "none";
-                              document.body.appendChild(a);
-                              a.click();
-                              a.remove();
-                              return {
-                                attempted: true,
-                                method: "progressive",
-                                url: downloadUrl,
-                              };
-                            }
-
-                            // 2) fallback: konstruiši parcel/video/{id}.mp4 iz dash cdn informacija
-                            const dash = json?.request?.files?.dash;
-                            if (dash) {
-                              const streams =
-                                dash.streams_avc ||
-                                dash.streams ||
-                                dash.streams_av1;
-                              const cdns = dash.cdns || {};
-                              const defaultCdn = dash.default_cdn;
-                              let base = null;
-                              if (defaultCdn && cdns[defaultCdn])
-                                base =
-                                  cdns[defaultCdn].avc_url ||
-                                  cdns[defaultCdn].url;
-                              if (!base) {
-                                const cdnVals = Object.values(cdns);
-                                base =
-                                  (cdnVals[0] &&
-                                    (cdnVals[0].avc_url || cdnVals[0].url)) ||
-                                  null;
-                              }
-                              if (streams && streams.length && base) {
-                                const id = streams[0].id.replace(/-.+/, "");
-                                let prefix = base
-                                  .replace(/\/sep\/.+/, "/")
-                                  .replace(/\/video\/.*/, "/");
-                                const videoUrl = `${prefix}parcel/video/${id}.mp4`;
-                                const a = document.createElement("a");
-                                a.href = videoUrl;
-                                if (suggestedFilename)
-                                  a.download = suggestedFilename;
-                                a.style.display = "none";
-                                document.body.appendChild(a);
-                                a.click();
-                                a.remove();
-                                return {
-                                  attempted: true,
-                                  method: "dash_parcel",
-                                  url: videoUrl,
-                                };
-                              }
-                            }
-
-                            return { attempted: false };
-                          } catch (err) {
-                            return { attempted: false, error: String(err) };
-                          }
-                        },
-                        args: [
-                          t.video_id ||
-                            t.video_id ||
-                            (t.url &&
-                              (t.url.match(/vimeo.com\/(\d+)/) || [])[1]),
-                          filename,
-                        ],
-                      });
-
-                      const ok =
-                        results &&
-                        results.some(
-                          (res) => res && res.result && res.result.attempted
-                        );
-                      if (ok) {
-                        r({ success: true, method: "in-frame-fresh" });
-                        return;
-                      }
-                    } catch (execErr) {
-                      console.warn(
-                        "in-frame executeScript failed",
-                        String(execErr)
-                      );
+                  // preferiraj direktne file linkove (type === "file"), pa video_url iz streamova
+                  let pick = null;
+                  for (const L of res.links) {
+                    if (L && L.type === "file" && (L.url || L.video_url)) {
+                      pick = L;
+                      break;
                     }
                   }
-                } catch (err) {
-                  console.warn("download_file flow error", String(err));
-                }
+                  if (!pick) {
+                    for (const L of res.links) {
+                      if (
+                        L &&
+                        (L.type === "stream" || L.type === "file") &&
+                        (L.video_url || L.url)
+                      ) {
+                        pick = L;
+                        break;
+                      }
+                    }
+                  }
 
-                // fallback: otvori novi tab (user može sačuvati) ili chrome.downloads
-                try {
-                  const created = await chrome.tabs.create({
-                    url,
-                    active: false,
-                  });
-                  r({ success: true, method: "new-tab", tabId: created.id });
-                  return;
-                } catch (tabErr) {
-                  a().qt(url, filename, (resp) => r(resp));
-                }
-              })();
+                  if (!pick) {
+                    if (res.master_play_list) {
+                      try {
+                        const master = res.master_play_list;
+                        const html = `
+<!doctype html><meta charset="utf-8"><body><p id="s">Copying playlist to clipboard...</p>
+<script>(async function(){try{const text=${JSON.stringify(
+                          res.master_play_list
+                        )};if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);document.getElementById('s').innerText='Master playlist copied. Closing.';setTimeout(()=>window.close(),800);}else{const ta=document.createElement('textarea');ta.style.width='100%';ta.style.height='60vh';ta.value=text;document.body.appendChild(ta);ta.select();document.getElementById('s').innerText='Press Ctrl/Cmd+C to copy then close this tab.'}}catch(e){document.getElementById('s').innerText='Copy failed: '+e;}})();</script>`;
+                        const dataUrl =
+                          "data:text/html;charset=utf-8," +
+                          encodeURIComponent(html);
+                        chrome.tabs
+                          .create({ url: dataUrl, active: true })
+                          .catch(() => {});
+                      } catch (e) {}
+                    }
+                    r(null);
+                    return;
+                  }
+
+                  const downloadUrl = pick.url || pick.video_url;
+                  const saveName =
+                    pick.filename || filename || `${res.title || "video"}.mp4`;
+
+                  // pokušaj chrome.downloads direktno (bez executeScript)
+                  chrome.downloads.download(
+                    { url: downloadUrl, filename: saveName },
+                    function (downloadId) {
+                      if (chrome.runtime.lastError || !downloadId) {
+                        // fallback: kopiraj master playlist ako postoji i otvoriti tab
+                        if (res.master_play_list) {
+                          try {
+                            const html = `
+<!doctype html><meta charset="utf-8"><body><p id="s">Copying playlist to clipboard...</p>
+<script>(async function(){try{const text=${JSON.stringify(
+                              res.master_play_list
+                            )};if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);document.getElementById('s').innerText='Master playlist copied. Closing.';setTimeout(()=>window.close(),800);}else{const ta=document.createElement('textarea');ta.style.width='100%';ta.style.height='60vh';ta.value=text;document.body.appendChild(ta);ta.select();document.getElementById('s').innerText='Press Ctrl/Cmd+C to copy then close this tab.'}}catch(e){document.getElementById('s').innerText='Copy failed: '+e;}})();</script>`;
+                            const dataUrl =
+                              "data:text/html;charset=utf-8," +
+                              encodeURIComponent(html);
+                            chrome.tabs
+                              .create({ url: dataUrl, active: true })
+                              .catch(() => {});
+                          } catch (e) {}
+                        }
+                        r(null);
+                      } else {
+                        r({
+                          success: true,
+                          method: "direct-download",
+                          id: downloadId,
+                        });
+                      }
+                    }
+                  );
+                });
+              } catch (err) {
+                r(null);
+              }
 
               return true;
             }
