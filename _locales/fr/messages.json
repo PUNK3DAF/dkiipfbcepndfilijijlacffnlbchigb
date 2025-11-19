@@ -1,0 +1,23 @@
+{
+  "name": {"message": "Video Downloader pour Vimeo"},
+  "description": {"message": "Maintenant, vous pouvez télécharger des vidéos de vimeo.com en un seul clic | Peut également télécharger la vidéo intégrée"},
+  "lang": {"message": "fr"},
+  "download": {"message": "Télécharger"},
+  "no_links_found": {"message": "Pas de liens trouvés"},
+  "rate_us":{"message": "nous évaluer"},
+  "your_rate":{"message": "votre avis"},
+  "refresh_page": {"message": "Rafraîchir"},
+  "current_page_header": {"message": "Page actuelle"},
+  "favorites_header": {"message": "Favoris"},
+  "no_video": {"message": "Aucune vidéo trouvée <br />Essayez de lire la vidéo si vous pouvez la voir sur la page actuelle."},
+  "here_no_vimeo_video": {"message": "Vidéo Vimeo introuvable"},
+  "go_to_vimeo": {"message": "Aller à Vimeo"},
+  "play": {"message": "Jouer"},
+  "add_to_favorites": {"message": "Ajouter aux favoris"},
+  "in_favorites": {"message": "Dans les favoris"},
+  "remove": {"message": "Supprimer"},
+  "close": {"message": "fermer"},
+  "error": {"message": "Erreur"},
+  "empty_favorites": {"message": "Votre liste de favoris est vide"},
+  "wait_download_in_popup": {"message": "Ne fermez pas la fenêtre contextuelle pendant le téléchargement"}
+}

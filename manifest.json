@@ -1,0 +1,50 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 3,
+  "name": "__MSG_name__",
+  "description": "__MSG_description__",
+  "version": "1.6",
+  "default_locale": "en",
+  "icons": {
+    "128": "img/icon_128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "img/icon_16.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "__MSG_name__"
+  },
+  "background": {
+    "service_worker": "js/background_script.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self' 'wasm-unsafe-eval';"
+  },
+
+  "permissions": [
+    "scripting",
+    "storage",
+    "webRequest",
+    "tabs",
+    "downloads",
+    "offscreen"
+  ],
+
+  "host_permissions": [
+    "*://*.teachify.rs/*",
+    "*://player.vimeo.com/*",
+    "*://*.vimeo.com/*",
+    "*://*.vimeocdn.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.vimeo.com/*", "*://embed.vhx.tv/*"],
+      "js": ["js/content_script.js"],
+      "css": ["css/content.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

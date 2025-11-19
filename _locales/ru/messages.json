@@ -1,0 +1,23 @@
+{
+  "name": {"message": "Загрузчик видео для Vimeo"},
+  "description": {"message": "Теперь вы можете загружать видео с vimeo.com одним щелчком мыши | Также можно загружать встроенное видео"},
+  "lang": {"message": "ru"},
+  "download": {"message": "Скачать"},
+  "no_links_found": {"message": "Ссылки не найдены"},
+  "rate_us": {"message": "оцените нас"},
+  "your_rate": {"message": "ваша оценка"},
+  "refresh_page": {"message": "Обновить"},
+  "current_page_header": {"message": "Текущая страница"},
+  "favorites_header": {"message": "Избранное"},
+  "no_video": {"message": "Видео не найдено <br /> Попробуйте воспроизвести видео, если вы видите его на текущей странице."},
+  "here_no_vimeo_video": {"message": "Видео Vimeo не найдено"},
+  "go_to_vimeo": {"message": "Перейти на Vimeo"},
+  "play": {"message": "Воспроизвести"},
+  "add_to_favorites": {"message": "Добавить в избранное"},
+  "in_favorites": {"message": "В избранном"},
+  "remove": {"message": "Удалить"},
+  "close": {"message": "закрыть"},
+  "error": {"message": "Ошибка"},
+  "empty_favorites": {"message": "Ваш список избранного пуст"},
+  "wait_download_in_popup": {"message": "Дождитесь завершения, прежде чем закрыть попап"}
+}

@@ -1,0 +1,23 @@
+{
+  "name": {"message": "Video Downloader for Vimeo"},
+  "description": {"message": "Agora pode descarregar vídeos de vimeo.com com um único clique | Também pode descarregar vídeo integrado"},
+  "lang": {"message": "pt"},
+  "download": {"message": "Descarregar"},
+  "no_links_found": {"message": "Não foram encontrados links"},
+  "rate_us":{"message": "avalie-nos"},
+  "your_rate":{"message": "a sua classificação"},
+  "refresh_page": {"message": "Atualizar"},
+  "current_page_header": {"message": "Pagina atual"},
+  "favorites_header": {"message": "Favoritos"},
+  "no_video": {"message": "Não foram encontrados vídeos <br />Tente reproduzir o vídeo se o conseguir ver na página atual."},
+  "here_no_vimeo_video": {"message": "Vídeo do Vimeo não encontradofound"},
+  "go_to_vimeo": {"message": "Ir para a Vimeo"},
+  "play": {"message": "Reproduzir"},
+  "add_to_favorites": {"message": "Adicionar aos favoritos"},
+  "in_favorites": {"message": "Nos favoritos"},
+  "remove": {"message": "Remover"},
+  "close": {"message": "perto"},
+  "error": {"message": "Erro"},
+  "empty_favorites": {"message": "A sua lista de favoritos está vazia"},
+  "wait_download_in_popup": {"message": "Não feche o pop-up durante o download"}
+}

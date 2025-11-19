@@ -1,0 +1,252 @@
+.vime-feed-dl-btn {
+  display: none;
+  border: 1px solid #F8F8F8;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  position: absolute;
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4gIDxtZXRhZGF0YT48P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiLz4gICA8L3JkZjpSREY+PC94OnhtcG1ldGE+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+PC9tZXRhZGF0YT48ZGVmcz4gICAgPHN0eWxlPiAgICAgIC5jbHMtMSB7ICAgICAgICBmaWxsOiAjZmZmOyAgICAgIH0gICAgICAuY2xzLTIgeyAgICAgICAgZmlsbDogIzAwYWRlZjsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cmVjdCBpZD0iUm91bmRlZF9SZWN0YW5nbGVfMSIgZGF0YS1uYW1lPSJSb3VuZGVkIFJlY3RhbmdsZSAxIiBjbGFzcz0iY2xzLTEiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIvPiAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNyw0VjlINGw2LDgsNi04SDEzVjRIN1oiLz48L3N2Zz4=) center no-repeat #F8F8F8;
+  background-size: contain;
+  top: 0;
+  left: 0;
+  line-height: 0;
+  z-index: 10;
+  opacity: 0.8;
+}
+.vime-feed-dl-btn:hover {
+  opacity: 1;
+}
+.vime-feed-dl-btn:active {
+  outline: 0;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.vime-feed-dl-btn.in_downloading {
+  font-style: normal;
+  display: flex !important;
+  font-size: 14px;
+  font-weight: 600;
+  background: #f8f8f8;
+  align-items: center;
+  min-width: 35px;
+  cursor: default;
+  opacity: 1;
+  padding-left: 3px;
+}
+.vime-feed-dl-btn.error {
+  font-style: normal;
+  display: flex !important;
+  font-size: 14px;
+  font-weight: 600;
+  background: #f8f8f8;
+  align-items: center;
+  width: 100%;
+  cursor: default;
+  opacity: 1;
+}
+a:hover > .vime-feed-dl-btn,
+a:hover > div > .vime-feed-dl-btn,
+div:hover > .vime-feed-dl-btn {
+  display: block;
+}
+a:hover > .vime-feed-dl-btn.in_downloading,
+a:hover > div > .vime-feed-dl-btn.in_downloading,
+div:hover > .vime-feed-dl-btn.in_downloading,
+section:hover > .vime_sidedock-style-3 {
+  display: flex;
+}
+.vime-dl-btn button .vime_percents {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vime-dl-btn.vime-style-2 {
+  display: inline;
+  color: #fff;
+  border-color: #00adef;
+  vertical-align: middle;
+  background-color: #00adef;
+  margin-left: 5px;
+  min-width: 4.25rem;
+  box-sizing: border-box;
+  min-height: 1.875rem;
+  padding: 0 0.625rem;
+  line-height: 2.14286;
+  font-size: 0.875rem;
+  width: auto;
+  border-width: 0.0625rem;
+  border-style: solid;
+  border-radius: 0.1875rem;
+  transition: all 0.1s ease-in-out;
+  letter-spacing: 0.1px;
+  align-items: center;
+  justify-content: center;
+}
+.vime-dl-btn.vime-style-2:hover {
+  border-color: #08c !important;
+  background-color: #08c !important;
+  cursor: pointer;
+}
+.vime-dl-btn.vime-style-2 .iris_btn-content {
+  margin-left: 0;
+  display: inline-flex;
+  align-items: center;
+  line-height: 2.3;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.vime-dl-btn.vime-style-2.in_downloading {
+  min-width: 150px;
+  text-align: left;
+}
+.vime-dl-btn.vime_sidedock-style-1,
+.vime-dl-btn.vime_sidedock-style-3 {
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+}
+.vime-dl-btn.vime_sidedock-style-1 label,
+.vime-dl-btn.vime_sidedock-style-3 label {
+  display: none;
+  border-radius: 0.25rem;
+  padding: 0.8em 1.2em;
+  line-height: 1.88rem;
+  height: 2rem;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 8px 0 8px 8px;
+  align-items: center;
+}
+.vime-dl-btn.vime_sidedock-style-1 button,
+.vime-dl-btn.vime_sidedock-style-3 button {
+  height: 2rem !important;
+  margin: 8px 0 8px 8px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.vime-dl-btn.vime_sidedock-style-1:hover label,
+.vime-dl-btn.vime_sidedock-style-3:hover label {
+  display: flex !important;
+}
+.vime-dl-btn.vime_sidedock-style-1.in_downloading button,
+.vime-dl-btn.vime_sidedock-style-3.in_downloading button {
+  min-width: 32px;
+  padding: 1px 0;
+}
+.vime-dl-btn.vime_sidedock-style-2 button {
+  background-color: black !important;
+  background-image: none !important;
+  opacity: 0.7 !important;
+  border-radius: 5px;
+  padding: 1px 6px !important;
+}
+.vime-dl-btn.vime_sidedock-style-2 button:hover {
+  background-color: #00adef !important;
+  opacity: 1 !important;
+}
+.vime-dl-btn.vime_sidedock-style-2.in_downloading button {
+  min-width: 32px;
+  padding: 1px 0;
+}
+.vime-dl-btn.vime_sidedock-style-3 {
+  position: absolute !important;
+  top: 5px !important;
+  right: 5px !important;
+  display: none;
+}
+.vime-dl-btn.vime_sidedock-style-3 button {
+  border: none;
+  width: 32px !important;
+  height: 32px !important;
+  background-color: black !important;
+  background-image: none !important;
+  opacity: 0.7 !important;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.vime-dl-btn.vime_sidedock-style-3 button:hover {
+  background-color: #00adef !important;
+  opacity: 1 !important;
+}
+.vime-dl-btn.vime_sidedock-style-3 label {
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  border: 0;
+  height: 32px;
+  font-size: 12px;
+}
+.vime-dl-btn.vime_sidedock-style-3.in_downloading button {
+  min-width: 32px;
+  padding: 1px 0;
+}
+#vime-popupMenu {
+  position: absolute;
+  min-height: 24px;
+  cursor: default;
+  text-align: left;
+  white-space: nowrap;
+  font-family: arial, sans-serif;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  z-index: 9999;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 190px;
+}
+#vime-popupMenu .ext-menu-item {
+  line-height: 24px;
+  color: white;
+  display: block;
+  padding: 0 5px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#vime-popupMenu .ext-menu-item .vmeo_title {
+  float: left;
+}
+#vime-popupMenu .ext-menu-item .vmeo_size {
+  float: right;
+  line-height: 22px;
+  height: 22px;
+  margin-left: 10px;
+}
+#vime-popupMenu .ext-menu-item .vime_badge_hd {
+  display: inline-block;
+  line-height: 18px;
+  width: 19px;
+  height: 17px;
+  color: black;
+  background-color: white;
+  font-size: 12px;
+  border-radius: 2px;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 3px;
+  padding-right: 1px;
+}
+#vime-popupMenu a:hover {
+  background-color: #2F8AFF;
+  color: #fff;
+}
+#vime-popupMenu a.disabled:hover {
+  background-color: inherit;
+  color: #3D3D3D;
+  cursor: not-allowed;
+}
+#vime-popupMenu a:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#vime-popupMenu a:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}

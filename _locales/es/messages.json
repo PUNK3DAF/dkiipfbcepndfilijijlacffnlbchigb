@@ -1,0 +1,23 @@
+{
+  "name": {"message": "Video Downloader for Vimeo"},
+  "description": {"message": "Ahora podrás descargar videos de Vimeo desde vimeo.com y también desde otras páginas web."},
+  "lang": {"message": "sp"},
+  "download": {"message": "Descargar"},
+  "no_links_found": {"message": "No se encontraron enlaces"},
+  "rate_us":{"message": "califícanos"},
+  "your_rate":{"message": "tu calificación"},
+  "refresh_page": {"message": "Actualizar"},
+  "current_page_header": {"message": "Página actual"},
+  "favorites_header": {"message": "Favoritos"},
+  "no_video": {"message": "No se encontró ningún video. <br />Intenta reproducir el video si está en la página actual."},
+  "here_no_vimeo_video": {"message": "No se encontraron videos de Vimeo"},
+  "go_to_vimeo": {"message": "Ir a Vimeo"},
+  "play": {"message": "Reproducir"},
+  "add_to_favorites": {"message": "Añadir a favoritos"},
+  "in_favorites": {"message": "En favoritos"},
+  "remove": {"message": "Eliminar"},
+  "close": {"message": "cerrar"},
+  "error": {"message": "Error"},
+  "empty_favorites": {"message": "Tu lista de favoritos está vacía"},
+  "wait_download_in_popup": {"message": "No cierres la ventana emergente mientras descargas"}
+}
