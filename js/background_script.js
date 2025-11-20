@@ -2677,144 +2677,19 @@
               return true;
             // ...existing code...
             case "download_file": {
-              const url = t.url;
-              const filename = t.filename;
-
-              // ako imamo direktan URL - koristimo postojeći helper za download
-              if (url) {
-                a().qt(url, filename, r);
-                return true;
-              }
-
-              // nema direktnog URL-a -> koristimo internu parser funkciju d.getVimeoLinks
               try {
                 d.getVimeoLinks(t, function (res) {
-                  if (!res) {
-                    r(null);
-                    return;
-                  }
-
-                  // ako nema linkova, pokušaj da kopiraš master playlist u clipboard i otvoriš tab
-                  if (!res.links || !res.links.length) {
-                    if (res.master_play_list) {
-                      try {
-                        const master = res.master_play_list;
-                        const html = `
-<!doctype html><meta charset="utf-8">
-<body style="font-family:Arial,Helvetica,sans-serif">
-<p id="s">Copying playlist to clipboard...</p>
-<script>
-(async function(){
-  try{
-    const text = ${JSON.stringify(res.master_play_list)};
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(text);
-      document.getElementById('s').innerText = 'Master playlist copied to clipboard. This tab will close.';
-      setTimeout(()=>window.close(),800);
-    } else {
-      // fallback: show textarea for manual copy
-      const ta=document.createElement('textarea');ta.style.width='100%';ta.style.height='60vh';ta.value=text;document.body.appendChild(ta);ta.select();
-      document.getElementById('s').innerText='Press Ctrl/Cmd+C to copy then close this tab.';
-    }
-  }catch(e){
-    document.getElementById('s').innerText='Copy failed: '+e;
-  }
-})();
-</script>`;
-                        const dataUrl =
-                          "data:text/html;charset=utf-8," +
-                          encodeURIComponent(html);
-                        chrome.tabs
-                          .create({ url: dataUrl, active: true })
-                          .catch(() => {});
-                      } catch (e) {}
-                    }
-                    r(null);
-                    return;
-                  }
-
-                  // preferiraj direktne file linkove (type === "file"), pa video_url iz streamova
-                  let pick = null;
-                  for (const L of res.links) {
-                    if (L && L.type === "file" && (L.url || L.video_url)) {
-                      pick = L;
-                      break;
-                    }
-                  }
-                  if (!pick) {
-                    for (const L of res.links) {
-                      if (
-                        L &&
-                        (L.type === "stream" || L.type === "file") &&
-                        (L.video_url || L.url)
-                      ) {
-                        pick = L;
-                        break;
-                      }
-                    }
-                  }
-
-                  if (!pick) {
-                    if (res.master_play_list) {
-                      try {
-                        const master = res.master_play_list;
-                        const html = `
-<!doctype html><meta charset="utf-8"><body><p id="s">Copying playlist to clipboard...</p>
-<script>(async function(){try{const text=${JSON.stringify(
-                          res.master_play_list
-                        )};if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);document.getElementById('s').innerText='Master playlist copied. Closing.';setTimeout(()=>window.close(),800);}else{const ta=document.createElement('textarea');ta.style.width='100%';ta.style.height='60vh';ta.value=text;document.body.appendChild(ta);ta.select();document.getElementById('s').innerText='Press Ctrl/Cmd+C to copy then close this tab.'}}catch(e){document.getElementById('s').innerText='Copy failed: '+e;}})();</script>`;
-                        const dataUrl =
-                          "data:text/html;charset=utf-8," +
-                          encodeURIComponent(html);
-                        chrome.tabs
-                          .create({ url: dataUrl, active: true })
-                          .catch(() => {});
-                      } catch (e) {}
-                    }
-                    r(null);
-                    return;
-                  }
-
-                  const downloadUrl = pick.url || pick.video_url;
-                  const saveName =
-                    pick.filename || filename || `${res.title || "video"}.mp4`;
-
-                  // pokušaj chrome.downloads direktno (bez executeScript)
-                  chrome.downloads.download(
-                    { url: downloadUrl, filename: saveName },
-                    function (downloadId) {
-                      if (chrome.runtime.lastError || !downloadId) {
-                        // fallback: kopiraj master playlist ako postoji i otvoriti tab
-                        if (res.master_play_list) {
-                          try {
-                            const html = `
-<!doctype html><meta charset="utf-8"><body><p id="s">Copying playlist to clipboard...</p>
-<script>(async function(){try{const text=${JSON.stringify(
-                              res.master_play_list
-                            )};if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);document.getElementById('s').innerText='Master playlist copied. Closing.';setTimeout(()=>window.close(),800);}else{const ta=document.createElement('textarea');ta.style.width='100%';ta.style.height='60vh';ta.value=text;document.body.appendChild(ta);ta.select();document.getElementById('s').innerText='Press Ctrl/Cmd+C to copy then close this tab.'}}catch(e){document.getElementById('s').innerText='Copy failed: '+e;}})();</script>`;
-                            const dataUrl =
-                              "data:text/html;charset=utf-8," +
-                              encodeURIComponent(html);
-                            chrome.tabs
-                              .create({ url: dataUrl, active: true })
-                              .catch(() => {});
-                          } catch (e) {}
-                        }
-                        r(null);
-                      } else {
-                        r({
-                          success: true,
-                          method: "direct-download",
-                          id: downloadId,
-                        });
-                      }
-                    }
-                  );
+                  if (!res) return r(null);
+                  r({
+                    master_play_list: res.master_play_list || null,
+                    links: res.links || null,
+                    title: res.title || null,
+                    video_id: res.video_id || t.video_id || null,
+                  });
                 });
               } catch (err) {
                 r(null);
               }
-
               return true;
             }
             // ...existing code...
